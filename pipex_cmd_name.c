@@ -6,7 +6,7 @@
 /*   By: kishizu <kishizu@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:42:43 by kishizu           #+#    #+#             */
-/*   Updated: 2023/12/04 22:00:10 by kishizu          ###   ########.fr       */
+/*   Updated: 2023/12/05 14:07:59 by kishizu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ char	*ft_check_path(t_info info, char *cmd)
 				return (cmd_path);
 			free(cmd_path);
 		}
-		ft_put_error_cmd(": command not found: ", cmd, 1);
+		ft_put_error_cmd(": command not found ", cmd, 1);
 	}
-	ft_put_error_cmd(": command not found: ", cmd, 0);
+	ft_put_error_cmd(": command not found ", cmd, 0);
 	return (NULL);
 }
 
@@ -83,7 +83,7 @@ char	**ft_cmd_set(t_info info, char *str)
 	char	**cmd;
 
 	if (ft_allspace(str))
-		ft_put_error_cmd_without_free(": command not found: ", str, 0);
+		ft_put_error_cmd_without_free(": command not found ", str, 0);
 	cmd = ft_split(str, ' ');
 	if (cmd == NULL)
 		return (NULL);

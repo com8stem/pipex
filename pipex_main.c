@@ -6,16 +6,11 @@
 /*   By: kishizu <kishizu@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:01:09 by kishizu           #+#    #+#             */
-/*   Updated: 2023/12/04 21:56:33 by kishizu          ###   ########.fr       */
+/*   Updated: 2023/12/05 14:05:30 by kishizu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q pipex");
-// }
 
 int	check_argv(int argc, char **argv)
 {
@@ -45,8 +40,8 @@ int	main(int argc, char **argv, char **envp)
 	while (i + 1 < argc)
 		ft_exec(info, i++);
 	while (wait_count++ < argc - 1)
-		wait (&wait_status);
-	if (WEXITSTATUS(wait_status))
+		wait (NULL);
+	if (WIFEXITED(wait_status))
 		if (checkflag == 1)
 			unlink(".tmp_heredoc");
 	return (0);
