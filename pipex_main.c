@@ -6,7 +6,7 @@
 /*   By: kishizu <kishizu@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:01:09 by kishizu           #+#    #+#             */
-/*   Updated: 2023/12/05 14:05:30 by kishizu          ###   ########.fr       */
+/*   Updated: 2023/12/05 14:13:23 by kishizu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(int argc, char **argv, char **envp)
 	int		checkflag;
 	int		i;
 	int		wait_count;
-	int		wait_status;
 
 	i = 2;
 	checkflag = check_argv(argc, argv);
@@ -41,8 +40,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_exec(info, i++);
 	while (wait_count++ < argc - 1)
 		wait (NULL);
-	if (WIFEXITED(wait_status))
-		if (checkflag == 1)
-			unlink(".tmp_heredoc");
+	if (checkflag == 1)
+		unlink(".tmp_heredoc");
 	return (0);
 }
